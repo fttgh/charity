@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好事成圓・全民挺公益｜中秋庇護工場採購目錄</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%AE%3C/text%3E%3C/svg%3E">
+
+<!-- ============================================================
+  點擊追蹤設定：
+  1) 若貴單位有 GA4，將下方 GA_MEASUREMENT_ID 換成你的 G-XXXXXXX，
+     頁面就會自動載入 gtag.js，並在每次點擊「前往購買」時
+     送出事件 vendor_click（含廠商名稱、地區、連結）。
+     之後在 GA4 -> 報表 -> 事件 -> vendor_click 就能看到各廠商點擊數。
+  2) 若不想用 GA4，也可以什麼都不改：程式會改用瀏覽器內建的
+     navigator.sendBeacon 把點擊記錄送到下方 BEACON_ENDPOINT
+     （例如接一個 Google表單或 Apps Script Web App 來記錄），
+     兩者都沒設定時，點擊仍會照常導去廠商網站，只是不會被記錄。
+============================================================= -->
+<script>
+  window.GA_MEASUREMENT_ID = ""; // 例如 "G-ABC1234567"，留空則不啟用 GA4
+  window.BEACON_ENDPOINT = "";   // 例如你的 Google Apps Script Web App 網址，留空則不啟用
+</script>
+<script>
+  if (window.GA_MEASUREMENT_ID) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', window.GA_MEASUREMENT_ID);
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy-950:#0d1730;
+    --navy-900:#131f3e;
+    --navy-800:#1b2a4d;
+    --navy-700:#263a63;
+    --gold-500:#cf9f45;
+    --gold-300:#e8c876;
+    --gold-100:#f6e6bf;
+    --cream:#f3ecdc;
+    --cream-dim:#c9c2ac;
+    --sage:#7fa38e;
+    --clay:#c07a4a;
+    --grey:#8a8577;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy-950);
+    color:var(--cream);
+    font-family:"Noto Sans TC","PingFang TC",sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC",serif;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  a{color:inherit;}
+
+  /* ---------- background texture ---------- */
+  .stars{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, rgba(246,230,191,.35), transparent),
+      radial-gradient(1.5px 1.5px at 70% 15%, rgba(246,230,191,.28), transparent),
+      radial-gradient(1px 1px at 85% 60%, rgba(246,230,191,.3), transparent),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(246,230,191,.22), transparent),
+      radial-gradient(1px 1px at 55% 45%, rgba(246,230,191,.25), transparent),
+      radial-gradient(1.5px 1.5px at 10% 65%, rgba(246,230,191,.2), transparent),
+      radial-gradient(1px 1px at 95% 85%, rgba(246,230,191,.22), transparent);
+    background-repeat:no-repeat;
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    position:relative; z-index:1;
+    padding:64px 24px 40px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .moon{
+    position:absolute; top:-90px; right:8%; width:220px; height:220px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--gold-100), var(--gold-500) 60%, #a97e33 100%);
+    box-shadow:0 0 90px 10px rgba(207,159,69,.35);
+    opacity:.9;
+  }
+  .eyebrow{
+    display:inline-block; letter-spacing:.35em; font-size:12px;
+    color:var(--gold-300); text-transform:uppercase; margin-bottom:18px;
+  }
+  h1.title{
+    font-size:clamp(30px,5vw,52px); margin:0 0 10px; font-weight:900;
+    color:var(--cream);
+  }
+  h1.title .accent{color:var(--gold-300);}
+  .subtitle{
+    max-width:640px; margin:0 auto 30px; color:var(--cream-dim); font-size:15px;
+  }
+
+  /* moon-phase stat signature */
+  .stats{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:36px;
+    margin-top:8px;
+  }
+  .stat{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .stat .ring{
+    width:84px; height:84px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:conic-gradient(var(--gold-400,#cf9f45) calc(var(--pct,0)*1%), rgba(255,255,255,.08) 0);
+  }
+  .stat .ring::before{
+    content:""; width:64px; height:64px; border-radius:50%; background:var(--navy-950);
+  }
+  .stat .num{position:absolute; font-family:"IBM Plex Mono",monospace; font-size:16px; font-weight:600; color:var(--gold-100);}
+  .stat .ring{position:relative;}
+  .stat .label{font-size:12.5px; color:var(--cream-dim);}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    position:sticky; top:0; z-index:5;
+    background:rgba(13,23,48,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(207,159,69,.25);
+    padding:14px 20px;
+  }
+  .toolbar-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  }
+  .search{
+    flex:1 1 220px;
+    background:var(--navy-800); border:1px solid var(--navy-700);
+    border-radius:999px; padding:9px 16px; color:var(--cream); font-size:14px;
+  }
+  .search:focus{outline:1px solid var(--gold-500);}
+  select{
+    background:var(--navy-800); border:1px solid var(--navy-700); color:var(--cream);
+    border-radius:999px; padding:9px 14px; font-size:13.5px;
+  }
+  .chip-group{display:flex; gap:6px; flex-wrap:wrap;}
+  .chip{
+    border:1px solid var(--navy-700); background:transparent; color:var(--cream-dim);
+    border-radius:999px; padding:8px 14px; font-size:13px; cursor:pointer;
+    transition:.15s;
+  }
+  .chip.active{background:var(--gold-500); border-color:var(--gold-500); color:var(--navy-950); font-weight:700;}
+  .count-tag{font-size:12.5px; color:var(--cream-dim); margin-left:auto;}
+
+  /* ---------- main ---------- */
+  main{max-width:1180px; margin:0 auto; padding:36px 20px 90px; position:relative; z-index:1;}
+  section.group{margin-bottom:52px;}
+  .group-head{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:6px;
+    border-bottom:1px solid rgba(207,159,69,.25); padding-bottom:12px;
+  }
+  .group-head h2{font-size:21px; margin:0; color:var(--gold-300);}
+  .group-head .desc{font-size:13px; color:var(--cream-dim);}
+  .group-note{font-size:12.5px; color:var(--cream-dim); margin:8px 0 20px;}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px;
+    margin-top:18px;
+  }
+  .card{
+    background:var(--navy-800); border:1px solid var(--navy-700);
+    border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px;
+    transition:.18s; min-height:190px;
+  }
+  .card:hover{border-color:var(--gold-500); transform:translateY(-2px);}
+  .badges{display:flex; gap:6px; flex-wrap:wrap;}
+  .badge{font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid; letter-spacing:.02em;}
+  .badge.region{color:var(--cream-dim); border-color:var(--navy-700);}
+  .badge.tag-bake{color:var(--gold-300); border-color:rgba(207,159,69,.5);}
+  .badge.tag-soap{color:var(--sage); border-color:rgba(127,163,142,.5);}
+  .badge.tag-gen{color:var(--cream-dim); border-color:var(--navy-700);}
+  .badge.tag-mooncake{color:var(--gold-300); border-color:rgba(207,159,69,.5);}
+  .badge.tag-cookie{color:#d99a6c; border-color:rgba(217,154,108,.5);}
+  .badge.tag-farm{color:#8fbf7f; border-color:rgba(143,191,127,.5);}
+  .badge.confirmed{color:var(--navy-950); background:var(--gold-300); border-color:var(--gold-300); font-weight:700;}
+  .badge.unconfirmed{color:var(--grey); border-color:var(--navy-700); border-style:dashed;}
+  .badge.hasphone{color:var(--sage); border-color:rgba(127,163,142,.5);}
+  .badge.donate{color:#e58a8a; border-color:rgba(229,138,138,.5); font-weight:600;}
+  .tel-link{color:var(--gold-300); text-decoration:underline;}
+  .prod-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:4px;}
+  .prod-list li{font-size:12.5px; color:var(--cream); line-height:1.45; padding-left:14px; position:relative;}
+  .prod-list li::before{content:"🥮"; position:absolute; left:0; top:0; font-size:10px;}
+  .meta-lines{font-size:11.5px; color:var(--gold-300); display:flex; flex-direction:column; gap:2px; margin-top:2px;}
+  .card h3{font-size:16px; margin:0; line-height:1.4; color:var(--cream);}
+  .card p{font-size:13px; color:var(--cream-dim); margin:0; flex:1;}
+  .card .go{
+    margin-top:auto; display:inline-flex; align-items:center; justify-content:center;
+    gap:6px; background:var(--gold-500); color:var(--navy-950); font-weight:700;
+    font-size:13.5px; padding:9px 14px; border-radius:8px; text-decoration:none;
+    border:none; cursor:pointer;
+  }
+  .card .go:hover{background:var(--gold-300);}
+  .card .go.disabled{
+    background:transparent; border:1px dashed var(--navy-700); color:var(--grey); cursor:default;
+  }
+
+  /* third-party list style (denser) */
+  .list{display:flex; flex-direction:column; gap:10px; margin-top:18px;}
+  .row{
+    display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center;
+    background:var(--navy-800); border:1px solid var(--navy-700); border-radius:10px; padding:12px 16px;
+  }
+  .row .name{font-size:14.5px;}
+  .row .name small{display:block; color:var(--cream-dim); font-size:12px; margin-top:2px;}
+  .row .go{white-space:nowrap;}
+
+  footer{
+    text-align:center; padding:40px 20px 60px; color:var(--cream-dim); font-size:12.5px;
+    border-top:1px solid rgba(207,159,69,.15);
+  }
+  footer a{color:var(--gold-300); text-decoration:none;}
+
+  .empty{text-align:center; padding:50px 20px; color:var(--cream-dim); display:none;}
+
+  @media (max-width:640px){
+    .row{grid-template-columns:1fr; text-align:left;}
+    .stats{gap:20px;}
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<header class="hero">
+  <div class="moon"></div>
+  <span class="eyebrow">中秋 ・ 好事成圓</span>
+  <h1 class="title">全民挺公益<span class="accent">採購目錄</span></h1>
+  <p class="subtitle">整理自 2026 中秋「好事成圓・全民挺公益」名單，共 62 家身心障礙福利機構與庇護工場。點選卡片即可前往各單位購買頁面，支持穩定就業。</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="ring" style="--pct:37"><span class="num">22</span></div>
+      <div class="label">已確認中秋商品</div>
+    </div>
+    <div class="stat">
+      <div class="ring" style="--pct:45"><span class="num">28</span></div>
+      <div class="label">有獨立官網</div>
+    </div>
+    <div class="stat">
+      <div class="ring" style="--pct:53"><span class="num">33</span></div>
+      <div class="label">第三方通路 / 短連結</div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <input id="search" class="search" type="text" placeholder="搜尋機構名稱或地區…">
+    <select id="zoneFilter">
+      <option value="">全部地區</option>
+      <option value="北北基宜">北北基宜</option>
+      <option value="桃竹苗">桃竹苗</option>
+      <option value="中彰投">中彰投</option>
+      <option value="雲嘉南">雲嘉南</option>
+      <option value="高屏">高屏</option>
+      <option value="花東">花東</option>
+      <option value="離島">離島</option>
+      <option value="全國">全國型機構</option>
+    </select>
+    <select id="tagFilter">
+      <option value="">全部品項</option>
+      <option value="mooncake">月餅 / 酥點禮盒</option>
+      <option value="cookie">餅乾 / 零食</option>
+      <option value="bake">烘焙 / 餐飲</option>
+      <option value="soap">手作皂 / 清潔</option>
+      <option value="farm">農產 / 生鮮</option>
+      <option value="gen">綜合商品</option>
+    </select>
+    <div class="chip-group" id="siteChips">
+      <button class="chip active" data-site="">全部</button>
+      <button class="chip" data-site="official">有官網</button>
+      <button class="chip" data-site="third">第三方通路</button>
+      <button class="chip" data-site="none">尚無連結</button>
+    </div>
+    <div class="chip-group" id="confirmChips">
+      <button class="chip" data-confirmed="1">🥮 只看已確認商品</button>
+      <button class="chip" data-donate="1">❤️ 可捐贈不取貨</button>
+    </div>
+    <span class="count-tag" id="countTag">共 62 家</span>
+  </div>
+</div>
+
+<div style="max-width:1180px;margin:16px auto 0;padding:0 20px;font-size:12.5px;color:var(--cream-dim);">
+  <div style="margin-bottom:4px;">🥮 <strong style="color:var(--gold-300);">已確認中秋商品</strong> = 已實際查證官網上架的中秋禮盒品項與價格</div>
+  <div style="margin-bottom:4px;">📞 <strong style="color:var(--sage);">已提供訂購專線</strong> = 尚未查到明確商品，但已知道可撥打的訂購電話（含分機、付款方式備註）</div>
+  <div style="margin-bottom:4px;">查證時間 2026/08/23，數量有限，實際請以當下庫存為準</div>
+  <div style="margin-bottom:4px;">善愛社福、蓮心自強協會、伯大尼之家農產品區為常態義賣（非中秋限定品）；蘭智基金會官網「禮盒」頁顯示為舊資料，建議致電確認；台灣技職教育產學研合作發展協會查無任何連結</div>
+  <div>第三方通路（pse.is、蝦皮等）多數尚未逐一查證，標示「商品需點連結確認」</div>
+</div>
+<main>
+  <section class="group" id="group-official">
+    <div class="group-head"><h2>有獨立官方網站</h2><span class="desc">可直接於機構自架網站選購</span></div>
+    <div class="grid" id="grid-official"></div>
+  </section>
+
+  <section class="group" id="group-third">
+    <div class="group-head"><h2>第三方通路／短連結</h2><span class="desc">透過網路商城、超商取貨或短網址導購</span></div>
+    <p class="group-note">部分連結為 pse.is／reurl.cc 等短網址，實際結帳頁面可能是蝦皮、樂天、7-11 mail order 等平台，屬正常現象，請放心點擊查看。</p>
+    <div class="list" id="grid-third"></div>
+  </section>
+
+  <section class="group" id="group-none">
+    <div class="group-head"><h2>尚無購買連結</h2><span class="desc">原始名單中查無官方連結，建議直接洽詢機構</span></div>
+    <div class="grid" id="grid-none"></div>
+  </section>
+
+  <p class="empty" id="emptyState">找不到符合條件的機構，換個關鍵字或篩選條件試試。</p>
+</main>
+
+<footer>
+  名單原始來源：<strong style="color:var(--gold-300);">中華民國總統府</strong>「好事成圓・全民挺公益」62家庇護工場及社福團體購買推薦（2026中秋）。地區、品項分類為依實際查證商品或機構名稱推測，正式商品與服務項目請以各單位官網公告為準。<br>
+  1–29 號的電話與付款備註參考自公開彙整文章「<a href="https://xxxxcat.com.tw/charity-2026/" target="_blank" rel="noopener">總統府推薦的62家庇護工場及社福團體購買連結｜四叉貓愛滾動</a>」，在此致謝。
+</footer>
+
+<script>
+
+/* ---------------- data ----------------
+ fields: id, name, region, tag(bake/soap/gen), site(official/third/none), url, desc
+-------------------------------------------------------------*/
+const RAW = [
+[1,"財團法人中華啟能基金會","全國","mooncake","official","https://www.spris.org.tw/news.php"],
+[2,"財團法人中華民國唐氏症基金會（愛不囉嗦）","全國","mooncake","official","https://www.downdown.tw/"],
+[3,"新北市喜憨兒庇護工場","新北","bake","third","https://www.sefunnet.com/Home/Index"],
+[4,"臺北市自閉兒社會福利基金會附設愛肯樂活工場","台北","gen","third","https://www.ican.url.tw/140778/"],
+[5,"社團法人中華善愛社福協會","全國","cookie","official","https://sanlove.sino1.com.tw/ShopList.aspx?id=116"],
+[6,"天主教光仁社會福利基金會附設臺北市私立育仁啟能中心","台北","mooncake","official","https://www.kjswf.org.tw/ShopDetail.aspx?id=143&sn=165"],
+[7,"財團法人臺北市小愉兒社會福利基金會（熊米屋）","台北","bake","third","https://papid.com.tw/"],
+[8,"財團法人育成社會福利基金會事業部","台北","gen","third","https://www.ycstore.com.tw/pages/2026%20Mid-Autumn"],
+[9,"糕菲庇護工廠","台北","cookie","official","https://www.taipeishelteredworkshops.com/store/view/15"],
+[10,"社團法人基隆市聾啞福利協進會附設勵聲美饕","基隆","bake","third","https://ptps.sfaa.gov.tw/mall/storePage/34E2BEE5-DB35-4555-8FE4-CC584D96CE21"],
+[11,"財團法人伊甸社會福利基金會附設伊甸烘焙咖啡屋","全國","mooncake","official","https://edenmall.eden.org.tw/"],
+[12,"財團法人桃園市私立觀音愛心家園","桃園","mooncake","official","https://kindgardenloveshop.org.tw/"],
+[13,"財團法人桃園市私立路得啟智學園","桃園","mooncake","official","https://ruth.eoffering.org.tw/contents/goods"],
+[14,"財團法人桃園市私立心燈啟智教養院","桃園","cookie","official","https://shin-deng.org/category/%E7%A6%AE%E7%9B%92%E7%B5%84"],
+[15,"衛生福利部桃園療養院附設樂桃桃咖啡簡餐坊","桃園","cookie","official","https://ptps.sfaa.gov.tw/mall/storePage/EBDEC933-8CF8-4925-A365-3F9A7BD2B678"],
+[16,"財團法人台灣省私立香園紀念教養院","新竹","gen","third","https://forms.gle/JW9bfwriu8LeYN8o6"],
+[17,"幼安歡喜兒咖啡屋","苗栗","mooncake","official","https://www.yuan.org.tw/prodlist/all"],
+[18,"財團法人瑪利亞社會福利基金會","台中","mooncake","official","https://www.maria.org.tw/index.php?ID=1987&incfn=cms%2Fviewmain.php&wkmode=1"],
+[19,"財團法人臺中市私立十方社會福利慈善事業基金會","台中","mooncake","official","https://www.sfang.org.tw/OnePage.aspx?id=658&tid=6"],
+[20,"微笑天使烘焙坊","台中","mooncake","official","https://smileangel.org.tw/"],
+[21,"立達啟能訓練中心附設實習商店","台中","gen","official","https://www.saint-coletta.org.tw/"],
+[22,"社團法人臺中市蓮心自強服務協會","台中","gen","official","https://www.lotusheart.org.tw/shop_tw.php"],
+[23,"財團法人彰化縣私立慈生仁愛院","彰化","mooncake","official","https://www.cisheng.org.tw/ap/news_view.aspx?bid=12&sn=e8b13dea-2318-4654-a8ea-fdcbf5e85c8a"],
+[24,"財團法人彰化縣私立基督教喜樂保育院","彰化","mooncake","official","https://www.joyce929.org.tw/ShopList.aspx?id=150&nowPage=2&tid="],
+[25,"彰化縣自閉症肯納家長協會附設肯納兒烘焙坊","彰化","bake","official","https://www.ckbakery.com.tw/h/index?key=rxch9"],
+[26,"社團法人雲林縣聲暉協進會","雲林","gen","third","https://www.facebook.com/permalink.php?story_fbid=pfbid0iEykPWrkbYXJSg9jqaTf3kejSEPV1ApPMPAwEtQ3s5KHhg4uCpNxAez6otpLXaMal&id=100064447851433"],
+[27,"若竹兒教育基金會附設若竹兒智能發展中心","南投","mooncake","official","https://www.rjrc.org.tw/ap/download_view.aspx?bid=111&sn=9f44212f-59b4-49c1-abd4-86535d23f28e"],
+[28,"再耕園咖啡庇護工場","嘉義","bake","third","https://www.facebook.com/permalink.php?story_fbid=pfbid025YufHQGuSPwLP9Ey1FgSEJJdt5PnZ25ncZxnETHe9YkVDmUGGfzZwV2nuq6Fuuccl&id=100064570484687"],
+[29,"瑞復益智中心附設漁光小舖","嘉義","gen","third","https://myship.7-11.com.tw/general/detail/GM2504176459231"],
+[30,"衛生福利部嘉南療養院愛的集團","台南","gen","third","https://pse.is/9hgast"],
+[31,"財團法人台灣省私立鴻佳啟能庇護中心","台南","gen","third","https://pse.is/9hgaqn"],
+[32,"臺南市心智障礙關顧協會附設展翼烘焙坊","台南","bake","third","https://pse.is/9hgcmw"],
+[33,"財團法人台南市私立蓮心園社會福利慈善事業基金會","台南","farm","official","https://www.lsy.org.tw/shop/ShopList.aspx?id=122"],
+[34,"高雄市立凱旋醫院附設社區復健中心夢想起飛商行","高雄","gen","third","https://pse.is/9hgcyx"],
+[35,"中外餅舖庇護工場","高雄","bake","third","https://www.iustore.com.tw/product/detail/1558602"],
+[36,"社團法人高雄市小草關懷協會","高雄","gen","third","https://www.iustore.com.tw/category/52441"],
+[37,"社團法人高雄市心理復健協會","高雄","gen","third","https://pse.is/9hgd9b"],
+[38,"一家工場","高雄","gen","third","https://pse.is/9hgdgc"],
+[39,"社團法人高雄三山脊損重建協會（三山烘焙坊）","高雄","mooncake","official","https://kscsci.org/"],
+[40,"高雄長庚紀念醫院附設湖畔咖啡屋","高雄","bake","third","https://pse.is/9hgdm3"],
+[41,"社團法人屏東縣向陽啟能協會","屏東","gen","third","https://pse.is/9hgdrs"],
+[42,"屏東基督教勝利之家附設膳工坊庇護工場","屏東","mooncake","official","https://vhomeshop.tw/"],
+[43,"慢慢恆春烘焙坊","屏東","bake","third","https://pse.is/9hgdws"],
+[44,"財團法人蘭智社會福利基金會","宜蘭","gen","official","https://lan-chui.org.tw/shop/123-2/"],
+[45,"財團法人宜蘭縣私立蘭馨婦幼中心","宜蘭","gen","third","https://pse.is/9hge3f"],
+[46,"臺北榮民總醫院員山分院附設庇護工場","宜蘭","gen","third","https://pse.is/9hge4r"],
+[47,"花蓮黎明身心障礙者庇護工場","花蓮","mooncake","official","https://www.newdawnone.com/"],
+[48,"台東縣私立牧心智能發展中心附設庇護性烘焙工場","台東","bake","third","https://pse.is/9hge99"],
+[49,"社團法人澎湖縣慢飛天使服務協會","澎湖","gen","third","https://pse.is/9hgee3"],
+[50,"晨光社會福利基金會附設妙妙屋庇護工場","台北","gen","third","https://myship.7-11.com.tw/general/detail/GM2607233312520"],
+[51,"更生少年關懷協會","全國","gen","official","https://616.org.tw/"],
+[52,"失親兒福利基金會","全國","gen","official","https://orphan.eoffering.org.tw/contents/goods"],
+[53,"菩提澄園庇護工場","全國","gen","third","https://joo.tw/puti/"],
+[54,"社團法人台灣福氣社區關懷協會（福氣烘焙坊）","全國","bake","third","https://pse.is/9hgesh"],
+[55,"財團法人臺中市私立信望愛智能發展中心","台中","gen","third","https://www.beclass.com/rid=294db366752ae00bcf30"],
+[56,"社團法人台灣技職教育產學研合作發展協會","全國","gen","none",null],
+[57,"社團法人屏東縣自閉症協進會","屏東","gen","third","https://www.facebook.com/autismpt/posts/pfbid021y5oYfaC7BrTkWmNiU6eVeKPkerqCyv41pdS4zmMkKkzowRXA23oi4XZFn3UQK6Sl"],
+[58,"財團法人伊甸社會福利基金會－創皂工坊","全國","soap","third","https://pse.is/9hgf56"],
+[59,"社團法人屏東縣啟智協進會","屏東","gen","third","https://reurl.cc/qaromn"],
+[60,"財團法人屏東縣私立基督教伯大尼之家","屏東","gen","official","https://www.bethany-pt.org/"],
+[61,"屏東縣向陽康復之友協會附設誠欣工作坊","屏東","gen","third","https://pse.is/9hgfbz"],
+[62,"社團法人屏東縣微笑關懷協會","屏東","gen","third","https://pse.is/9hgff2"]
+];
+
+const ZONE_MAP = {
+  "台北":"北北基宜","新北":"北北基宜","基隆":"北北基宜","宜蘭":"北北基宜",
+  "桃園":"桃竹苗","新竹":"桃竹苗","苗栗":"桃竹苗",
+  "台中":"中彰投","彰化":"中彰投","南投":"中彰投",
+  "雲林":"雲嘉南","嘉義":"雲嘉南","台南":"雲嘉南",
+  "高雄":"高屏","屏東":"高屏",
+  "花蓮":"花東","台東":"花東",
+  "澎湖":"離島",
+  "全國":"全國"
+};
+
+// ---- 僅能透過粉絲團私訊／電話訂購的機構（無法直接線上下單）----
+const CONTACT_ONLY = {
+  57: { phone:"08-7351024", fbUrl:"https://www.facebook.com/autismpt/posts/pfbid021y5oYfaC7BrTkWmNiU6eVeKPkerqCyv41pdS4zmMkKkzowRXA23oi4XZFn3UQK6Sl",
+        note:"只能臉書粉絲團私訊或電話訂購，暫無線上購物車。" },
+};
+
+// ---- 訂購專線與付款方式備註（電話 1-29 號整理自「四叉貓愛滾動」公開彙整文，2026/08/22 更新；其餘為官網查證所得）----
+const CONTACT_INFO = {
+  1:{phone:"02-2671-3001#2209", note:"僅接受現金或轉帳"},
+  2:{phone:"02-2278-9321#246"},
+  3:{phone:"02-8221-7676#111"},
+  4:{phone:"02-2599-3803#18"},
+  5:{phone:"02-2966-2058"},
+  6:{phone:"02-2382-1090#12"},
+  7:{phone:"02-2422-0310"},
+  8:{phone:"02-2705-2588#27", soldOut:true, note:"目前官網商品全部售完缺貨中"},
+  9:{phone:"02-2785-2499#9"},
+  10:{phone:"02-2429-1433"},
+  11:{phone:"03-427-8229#101"},
+  12:{phone:"03-483-3820", note:"僅接受貨到付款或匯款"},
+  13:{phone:"03-498-0096#115"},
+  14:{phone:"03-420-5558#116"},
+  15:{phone:"03-369-8553#2633"},
+  16:{phone:"03-569-0951#118", note:"需填Google表單，僅接受現金／匯款／貨到付款"},
+  17:{phone:"03-733-8180"},
+  18:{phone:"04-2471-3535#1403", note:"僅接受匯款，匯款後需致電告知"},
+  19:{phone:"04-2239-3008", note:"僅接受匯款，匯款後需致電告知"},
+  20:{phone:"04-2260-7321#30"},
+  21:{phone:"04-2202-8888#121", note:"需填Google表單訂購"},
+  22:{phone:"04-2680-5843"},
+  23:{phone:"04-722-2735#111", note:"填單後自行匯款，匯款後需致電告知"},
+  24:{phone:"04-890-3281"},
+  25:{phone:"04-722-3460"},
+  26:{phone:"05-597-4861", note:"僅FB發文公告，需填表單傳真或傳LINE，僅接受貨到付款或匯款"},
+  27:{phone:"05-220-9987", note:"需填表單傳真或傳LINE，僅接受貨到付款或匯款"},
+  28:{phone:"05-285-2698#232", note:"僅FB發文，需致電或私訊粉專訂購"},
+  29:{phone:"06-391-1531#252"},
+  33:{phone:"06-688-2727"},
+  39:{phone:"07-719-1039"},
+  42:{phone:"08-736-6294#226"},
+  47:{phone:"03-846-0527"},
+  57:{phone:"08-7351024", note:"只能臉書粉絲團私訊或電話訂購，暫無線上購物車"},
+  60:{phone:"08-736-7264"},
+};
+
+// ---- 已實際爬官網確認的中秋商品資料（2026/08/23 查證）----
+// products: [{name, price, was?, donate?}] donate=true 表示「認購捐贈款」：付款後不會收到實體禮盒，商品由機構代送給其他弱勢/長者
+// freeShip: 免運門檻文字  deadline: 訂購/早鳥截止  payment: 付款方式  phone: 訂購專線  customizable: 是否可客製
+const CONFIRMED = {
+  1: { products:[
+        {name:"土鳳梨酥禮盒",price:500},{name:"鳳凰酥禮盒",price:500},
+        {name:"脆片禮盒（杏仁/芝麻）",price:550},{name:"綜合蛋黃酥禮盒",price:600},
+        {name:"堅果塔禮盒 12入",price:700}
+      ], freeShip:"滿萬免運（限同地址，離島除外）", deadline:"9/11 前訂購滿萬打95折", payment:"現金／匯款", phone:"02-2672-1007",
+      dm:"https://www.spris.org.tw/upload/images/115中秋DM0709背面定稿2(1).jpg" },
+  2: { products:[
+        {name:"雀羽夜眠綜合酥禮盒",price:618,was:650},{name:"藍海星月鳳梨酥禮盒",price:525,was:550},
+        {name:"海洋夢境健康堅果禮盒",price:485,was:510},{name:"輕甜時光午茶禮盒",price:428,was:450},
+        {name:"F1【送愛募集】秋節暖心送愛（購買者不會收到商品，由機構代送弱勢家庭）",price:420,donate:true}
+      ], freeShip:"滿$3000常溫免運／滿$1800冷藏免運", payment:"信用卡／LINE Pay／街口支付", phone:"02-2278-9321#135", customizable:true },
+  6: { products:[
+        {name:"光仁×Mandie 微光祝福A禮盒（蛋黃酥/雪月沙/紫晶酥/餅乾）",price:600,was:650},
+        {name:"傳愛禮盒（購買者不會收到商品，由機構代送至白永恩基金會／失智老人基金會轉贈長者）",price:null,donate:true}
+      ], freeShip:"折扣後滿$8000免運（同地址，傳愛禮盒不加收運費）", deadline:"8/27 前早鳥優惠；9/7起陸續出貨", payment:"信用卡／ATM／超商", phone:"02-2382-1090", customizable:false,
+      dm:"https://www.kjswf.org.tw/upload/{639185214279694624}_光仁社福-2026中秋禮盒DM.pdf" },
+  9: { products:[
+        {name:"手工餅乾禮盒（可客製化）",price:580,was:600},{name:"9宮格禮盒（餅乾可客製化）",price:650,was:700},
+        {name:"幸福滿格禮盒（可客製化）",price:750,was:800},{name:"愛就夠×糕菲聯名餅乾禮盒",price:790,was:850}
+      ], customizable:true, payment:"線上刷卡／超商／ATM", phone:"02-2785-2499" },
+  12: { products:[
+        {name:"中秋禮盒專區（14款可選：富貴三併、祝福禮盒、幸福餅乾提盒等）",price:null}
+      ], freeShip:"雙北桃竹滿$3200免運／常溫禮盒全省滿$5000免運", payment:"線上刷卡／ATM", phone:"03-483-3820" },
+  11: { products:[
+        {name:"中秋禮盒（8款，蛋黃酥／綠豆椪／水果酥等）",price:null}
+      ], deadline:"早鳥9折起，即日開放訂購", payment:"電洽／LINE預約", phone:"03-427-8229#104",
+      dm:"https://www.eden.org.tw/downloads/image/news/2026/07/20260703_message/20260703_messageA.jpg" },
+  13: { products:[
+        {name:"福心伴月禮盒",price:920},{name:"廣式小月餅",price:520},
+        {name:"綜合水果鳳梨酥禮盒",price:660},{name:"好運土鳳梨酥",price:550},
+        {name:"金芒好運禮盒",price:540}
+      ], payment:"線上刷卡", phone:"03-498-0096" },
+  14: { products:[
+        {name:"ESG中秋限定款-幸福彈珠檯禮盒（含蔓越莓/咖啡杏仁/梅子酥/藍莓酥/濾掛咖啡）",price:600,was:699}
+      ], deadline:"9/5前訂購享早鳥價", payment:"線上刷卡／超商／ATM／LINE Pay", phone:"03-420-5558" },
+  15: { products:[
+        {name:"樂桃桃$390手工餅乾禮盒",price:390},{name:"$520堅果塔&乳酪棒&杏仁脆餅禮盒",price:520},
+        {name:"$660堅果塔手工餅乾禮盒（喜餅禮盒）",price:660},{name:"$720堅果塔禮盒(12入)",price:720}
+      ], freeShip:"桃園市同地址滿$6000免運（未滿加收$200）", payment:"電洽訂購／Google表單", deadline:"建議提前1-2週訂購", phone:"03-369-8553#2621" },
+  17: { products:[
+        {name:"團團圓圓手提禮盒",price:558,was:620},{name:"月下好果｜綜合米果分享禮盒",price:563,was:800},
+        {name:"暖心相遇手提禮盒",price:693,was:770},{name:"歡喜酥（土鳳梨酥/茶香鳳莓酥）禮盒",price:495,was:550}
+      ], payment:"線上刷卡", phone:"037-366995" },
+  18: { products:[
+        {name:"瑪利MAMA《好月韶光》系列中秋禮盒",price:null}
+      ], deadline:"即日起預購，9/8起開放提貨", payment:"電洽／LINE(@ipb4580m)", phone:"04-2251-7909" },
+  19: { products:[
+        {name:"讓愛成禮",price:680},{name:"靜好相伴",price:550},{name:"時光同行",price:560}
+      ], freeShip:"單次出貨滿30盒免運（未滿依盒數$210~$500）", deadline:"讓愛成禮早鳥優惠至8/15止；出貨8/11-10/1",
+      payment:"官方LINE @uoh6169h", phone:"04-2239-3008", customizable:false },
+  20: { products:[
+        {name:"月映啡香禮盒（蛋黃酥3入+手工餅乾）",price:618,was:650},{name:"9入蛋黃酥禮盒",price:665,was:699},
+        {name:"金秋紅韻禮盒（果仁塔+糙米堅果酥）",price:494,was:520},{name:"蒔韻好農禮盒×龍井農會聯名",price:798}
+      ], deadline:"8/31前早鳥95折，最快8/20取貨", payment:"線上刷卡／多元付款", phone:"04-2260-7321" },
+  23: { products:[
+        {name:"老居工坊．慈生手作 中秋禮盒",price:null}
+      ], deadline:"9/22前訂購享特價優惠", payment:"詳見官網DM", phone:"04-722-2735" },
+  24: { products:[
+        {name:"喜樂圓滿禮盒(蛋奶素)",price:500},{name:"喜樂真愛禮盒(蛋奶素)",price:680},
+        {name:"菓珍莓好禮盒(蛋奶素)",price:400},{name:"喜樂萊姆禮盒(純素)",price:450}
+      ], payment:"線上刷卡", phone:"04-8960271" },
+  27: { products:[{name:"115年中秋節禮盒（訂購單PDF，品項另洽）",price:null}], payment:"電洽", phone:"05-220-9987" },
+  33: { products:[
+        {name:"柚來了禮盒－早鳥4箱組",price:2000,was:2200},{name:"頂級老欉文旦－早鳥3箱組",price:2049,was:2250},
+        {name:"日曬米+紫蘇梅禮盒",price:450},{name:"經典蛋捲",price:250}
+      ], payment:"線上刷卡", phone:"06-688-2727" },
+  39: { products:[{name:"中秋禮盒（6/8/10/12入自選）",price:null}],
+      freeShip:"高雄市區滿7盒免運／外縣市滿$3000免運", payment:"貨到付款／轉帳／劃撥", phone:"07-719-1039" },
+  42: { products:[
+        {name:"綜合月餅禮盒〖12入〗",price:630,was:600},{name:"雙層土鳳梨酥禮盒",price:850,was:800},
+        {name:"雙層綠豆椪禮盒",price:760,was:720},{name:"綠豆椪禮盒〖12入〗",price:580,was:550}
+      ], deadline:"即日起至8/25前九折早鳥優惠", payment:"線上刷卡(Shopify)", phone:"08-736-6294#226" },
+  47: { products:[
+        {name:"2026中秋節慶禮盒－百年傳奇公益聯名款",price:null},{name:"2026中秋節慶禮盒－團圓美滿",price:null},
+        {name:"2026中秋節慶禮盒－彩悅花樣",price:null}
+      ], payment:"線上刷卡", phone:"03-846-0527", customizable:true },
+  60: { products:[{name:"2026年節限量義賣品／愛心伴手禮盒組",price:null}], payment:"線上刷卡／ATM", phone:"08-736-7264" },
+};
+
+const TAG_LABEL = { bake:"烘焙／餐飲", soap:"手作皂／清潔", gen:"綜合商品", mooncake:"月餅／酥點禮盒", cookie:"餅乾／零食", farm:"農產／生鮮" };
+const TAG_DESC = {
+  bake:[
+    "庇護工場自製烘焙糕點與麵包，購買即支持身心障礙朋友穩定就業。",
+    "附設烘焙／餐飲服務，商品與服務多由身心障礙朋友參與製作。"
+  ],
+  soap:[
+    "庇護工坊手工製作，提供天然手作皂等清潔用品，兼顧品質與公益意義。"
+  ],
+  mooncake:[
+    "身心障礙庇護工場手作中秋禮盒，蛋黃酥、鳳梨酥、綠豆椪等應景酥點自選。"
+  ],
+  cookie:[
+    "庇護工場手作餅乾、零食類商品，小份量分送也很適合。"
+  ],
+  farm:[
+    "庇護工場結合在地農產推出的禮盒，柚子、米食等時令商品為主。"
+  ],
+  gen:[
+    "身心障礙福利機構附設商店，提供多樣手作商品與生活用品。",
+    "庇護工場／教養機構自營通路，商品所得用於支持機構服務與就業。",
+    "身心障礙福利機構直營，選購商品即是支持穩定就業最直接的方式。"
+  ]
+};
+function pickDesc(tag,id){
+  const arr = TAG_DESC[tag];
+  return arr[id % arr.length];
+}
+
+const DATA = RAW.map(r=>({
+  id:r[0], name:r[1], region:r[2], tag:r[3], site:r[4], url:r[5],
+  zone: ZONE_MAP[r[2]] || "全國",
+  desc: r[4]==="none" ? "原始名單查無官方購買連結，建議直接搜尋機構名稱或致電洽詢。" : pickDesc(r[3], r[0]),
+  confirmed: CONFIRMED[r[0]] || null,
+  hasDonate: !!(CONFIRMED[r[0]] && CONFIRMED[r[0]].products && CONFIRMED[r[0]].products.some(p=>p.donate))
+}));
+
+/* ---------------- render ---------------- */
+const gridOfficial = document.getElementById('grid-official');
+const gridThird = document.getElementById('grid-third');
+const gridNone = document.getElementById('grid-none');
+const groups = {
+  official: document.getElementById('group-official'),
+  third: document.getElementById('group-third'),
+  none: document.getElementById('group-none'),
+};
+const emptyState = document.getElementById('emptyState');
+const countTag = document.getElementById('countTag');
+
+function trackClick(item){
+  try{
+    if(window.gtag){
+      window.gtag('event','vendor_click',{
+        vendor_id:item.id, vendor_name:item.name, region:item.region,
+        site_type:item.site, link_url:item.url
+      });
+    }
+    if(window.BEACON_ENDPOINT && navigator.sendBeacon){
+      const payload = new Blob([JSON.stringify({
+        id:item.id, name:item.name, region:item.region, site:item.site,
+        url:item.url, ts:Date.now()
+      })], {type:'application/json'});
+      navigator.sendBeacon(window.BEACON_ENDPOINT, payload);
+    }
+  }catch(e){ console.warn('tracking failed', e); }
+}
+
+function getContact(item){ return CONTACT_INFO[item.id] || null; }
+function telHref(phone){ return 'tel:' + phone.replace(/[^\d+]/g,''); }
+
+function confirmedBlock(c, contact){
+  const items = (c && c.products || []).slice(0,4).map(p=>{
+    const price = p.price ? `NT$${p.price}${p.was?`<span style="text-decoration:line-through;opacity:.5;margin-left:4px;">$${p.was}</span>`:''}` : '';
+    const donateTag = p.donate ? ` <span class="badge donate">❤️ 捐贈不取貨</span>` : '';
+    return `<li>${p.name}${price?` — ${price}`:''}${donateTag}</li>`;
+  }).join('');
+  const meta = [];
+  if(c && c.freeShip) meta.push(`🚚 ${c.freeShip}`);
+  if(c && c.deadline) meta.push(`⏰ ${c.deadline}`);
+  if(c && c.payment) meta.push(`💳 ${c.payment}`);
+  if(c && c.customizable) meta.push(`✎ 可客製化`);
+  if(contact && contact.phone) meta.push(`📞 <a href="${telHref(contact.phone)}" class="tel-link">${contact.phone}</a>`);
+  if(contact && contact.note) meta.push(`⚠️ ${contact.note}`);
+  return `
+    ${items?`<ul class="prod-list">${items}</ul>`:''}
+    ${meta.length?`<div class="meta-lines">${meta.map(m=>`<div>${m}</div>`).join('')}</div>`:''}
+  `;
+}
+
+function statusBadge(item, contact){
+  if(item.confirmed) return `<span class="badge confirmed">🥮 已確認中秋商品</span>`;
+  if(contact && contact.phone) return `<span class="badge hasphone">📞 已提供訂購專線</span>`;
+  return `<span class="badge unconfirmed">商品需點連結確認</span>`;
+}
+
+function cardHTML(item){
+  const tagClass = 'tag-'+item.tag;
+  const contact = getContact(item);
+  const soldOut = contact && contact.soldOut;
+  const btn = soldOut
+    ? `<span class="go disabled">目前缺貨中</span>`
+    : (item.url ? `<a class="go" href="${item.url}" target="_blank" rel="noopener" data-id="${item.id}">前往購買 →</a>` : `<span class="go disabled">暫無購買連結</span>`);
+  const body = (item.confirmed || contact) ? confirmedBlock(item.confirmed, contact) : `<p>${item.desc}</p>`;
+  return `
+    <div class="card" data-name="${item.name}" data-region="${item.region}">
+      <div class="badges">
+        <span class="badge region">${item.region}</span>
+        <span class="badge ${tagClass}">${TAG_LABEL[item.tag]}</span>
+        ${statusBadge(item, contact)}
+        ${soldOut?'<span class="badge unconfirmed">缺貨</span>':''}
+      </div>
+      <h3>${item.name}</h3>
+      ${body}
+      ${btn}
+    </div>`;
+}
+
+function rowHTML(item){
+  const tagClass = 'tag-'+item.tag;
+  const contact = getContact(item);
+  const contactOnly = CONTACT_ONLY[item.id];
+  let btn;
+  if(contactOnly){
+    btn = `<div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <a class="go" href="${telHref(contactOnly.phone)}">📞 撥打訂購</a>
+      <a class="go" style="background:transparent;border:1px solid var(--gold-500);color:var(--gold-300);" href="${contactOnly.fbUrl}" target="_blank" rel="noopener">💬 粉專私訊</a>
+    </div>`;
+  } else {
+    btn = item.url ? `<a class="go" href="${item.url}" target="_blank" rel="noopener" data-id="${item.id}">前往購買 →</a>` : `<span class="go disabled">暫無連結</span>`;
+  }
+  const extraLine = contactOnly ? contactOnly.note : (contact && (contact.note || contact.phone) ? [contact.phone?`📞 ${contact.phone}`:'', contact.note?`⚠️ ${contact.note}`:''].filter(Boolean).join('　') : '');
+  return `
+    <div class="row" data-name="${item.name}" data-region="${item.region}">
+      <div class="name">${item.name}
+        <small>${item.desc}${extraLine?`<br>${extraLine}`:''}</small>
+      </div>
+      <div class="badges">
+        <span class="badge region">${item.region}</span>
+        <span class="badge ${tagClass}">${TAG_LABEL[item.tag]}</span>
+      </div>
+      ${btn}
+    </div>`;
+}
+
+function render(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const zone = document.getElementById('zoneFilter').value;
+  const tag = document.getElementById('tagFilter').value;
+  const site = document.querySelector('#siteChips .chip.active').dataset.site;
+  const confirmedOnly = document.querySelector('#confirmChips .chip[data-confirmed]').classList.contains('active');
+  const donateOnly = document.querySelector('#confirmChips .chip[data-donate]').classList.contains('active');
+
+  const filtered = DATA.filter(it=>{
+    if(q && !(it.name.toLowerCase().includes(q) || it.region.toLowerCase().includes(q))) return false;
+    if(zone && it.zone !== zone) return false;
+    if(tag && it.tag !== tag) return false;
+    if(site && it.site !== site) return false;
+    if(confirmedOnly && !it.confirmed) return false;
+    if(donateOnly && !it.hasDonate) return false;
+    return true;
+  });
+
+  const off = filtered.filter(i=>i.site==='official');
+  const third = filtered.filter(i=>i.site==='third');
+  const none = filtered.filter(i=>i.site==='none');
+
+  gridOfficial.innerHTML = off.map(cardHTML).join('');
+  gridThird.innerHTML = third.map(rowHTML).join('');
+  gridNone.innerHTML = none.map(cardHTML).join('');
+
+  groups.official.style.display = off.length ? '' : 'none';
+  groups.third.style.display = third.length ? '' : 'none';
+  groups.none.style.display = none.length ? '' : 'none';
+  emptyState.style.display = filtered.length ? 'none' : 'block';
+  countTag.textContent = `共 ${filtered.length} 家`;
+
+  // wire click tracking (delegate)
+  document.querySelectorAll('a.go[data-id]').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      const item = DATA.find(d=>String(d.id)===a.dataset.id);
+      if(item) trackClick(item);
+    }, {once:true});
+  });
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('zoneFilter').addEventListener('change', render);
+document.getElementById('tagFilter').addEventListener('change', render);
+document.querySelectorAll('.chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    if(chip.parentElement.id === 'confirmChips'){
+      chip.classList.toggle('active'); // each toggle chip (confirmed-only / donate-only) is independent
+    } else {
+      document.querySelectorAll('#siteChips .chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+    }
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
