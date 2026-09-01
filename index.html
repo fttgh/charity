@@ -423,9 +423,9 @@
       <button class="chip" data-site="none">尚無連結</button>
     </div>
     <div class="chip-group" id="confirmChips">
+      <button class="chip" data-orderok="1">🔔 目前確認可接單</button>
       <button class="chip" data-confirmed="1">🥮 只看已確認商品</button>
       <button class="chip" data-donate="1">❤️ 可捐贈不取貨</button>
-      <button class="chip" data-orderok="1">🔔 目前確認可接單</button>
     </div>
     <span class="count-tag" id="countTag">共 63 家</span>
   </div>
@@ -660,11 +660,12 @@ const CONTACT_INFO = {
 // ---- 志工實際私訊／致電回報之訂單狀態（非官網資料，持續更新中）----
 // status: 'ok' = 機構已明確回覆仍可接單／有貨（不含僅收到制式罐頭回覆但未告知狀態者）
 const ORDER_STATUS = {
+  2: { status:"ok", label:"部分禮盒可接單", note:"9/2 機構回覆：中秋檔期部分禮盒仍有可接單數量，歡迎協助推廣曝光。" },
   4: { status:"ok", label:"尚可訂購", note:"9/1 機構回覆：月餅還能訂購，歡迎透過網站下單。" },
   5: { status:"ok", label:"可接單（9/21-30後出貨）", note:"9/1 電洽確認：訂單仍可接受，但出貨時間需在 9/21-30 之間或之後。" },
 };
 // ---- 已私訊詢問但尚未取得明確訂單狀態的機構 id（僅用於首頁統計數字）----
-const ORDER_PENDING_IDS = [1,2,6,7,9,11,12,13,14];
+const ORDER_PENDING_IDS = [1,6,7,9,11,12,13,14];
 
 // ---- 已實際爬官網確認的中秋商品資料（2026/08/23 查證）----
 // products: [{name, price, was?, donate?}] donate=true 表示「認購捐贈款」：付款後不會收到實體禮盒，商品由機構代送給其他弱勢/長者
