@@ -684,6 +684,9 @@ const CONFIRMED = {
         {name:"2026中秋轉贈-皇樓禾豐之月禮盒（您不會收到商品）",price:500,was:670,donate:true},
         {name:"2026中秋轉贈-平安麵2袋(附醬)（您不會收到商品）",price:500,was:560,donate:true}
       ], payment:"線上訂購（愛肯樂活工場官網）" },
+  5: { products:[
+        {name:"2026中秋-歡苗禮盒（法式焦糖腰果杏仁塔/歐式可可核桃雜糧塔/日式咖哩腰果塔/美式海鹽夏威夷豆蔓越莓塔各1入/台式鳳凰酥4入）",price:488,was:520}
+      ], payment:"信用卡／匯款轉帳／貨到付款／到店付現" },
   63: { products:[
         {name:"中秋禮盒（流心酥／茶心酥／蛋黃酥／芋頭酥／雪Q餅／巧克力餅乾／抹茶餅乾，可自由搭配）",price:null}
       ], payment:"電洽／LINE 訂購（@534fxwht）", customizable:true },
@@ -893,6 +896,7 @@ function sourceBadge(item){
 }
 
 function statusBadge(item, contact){
+  if(item.orderStatus && item.orderStatus.status === 'full') return ''; // 已額滿的機構不再顯示已確認/專線徽章，避免使用者誤以為還能訂購
   if(item.confirmed) return `<span class="badge confirmed">🥮 已確認中秋商品</span>`;
   if(contact && contact.phone) return `<span class="badge hasphone">📞 已提供訂購專線</span>`;
   return `<span class="badge unconfirmed">商品需點連結確認</span>`;
@@ -913,10 +917,12 @@ function cardHTML(item){
   const tagClass = 'tag-'+item.tag;
   const contact = getContact(item);
   const soldOut = contact && contact.soldOut;
+  const isFull = item.orderStatus && item.orderStatus.status === 'full';
   const btn = soldOut
     ? `<span class="go disabled">目前缺貨中</span>`
     : (item.url ? `<a class="go" href="${item.url}" target="_blank" rel="noopener" data-id="${item.id}">${linkLabel(item.url)}</a>` : `<span class="go disabled">暫無購買連結</span>`);
-  const body = (item.confirmed || contact) ? confirmedBlock(item.confirmed, contact) : `<p>${item.desc}</p>`;
+  // 已額滿的機構不再顯示商品明細/專線資訊，只保留下方志工回報說明，避免使用者看到一堆商品卻無法訂購而困惑
+  const body = isFull ? '' : ((item.confirmed || contact) ? confirmedBlock(item.confirmed, contact) : `<p>${item.desc}</p>`);
   return `
     <div class="card" data-name="${item.name}" data-region="${item.region}">
       <div class="badges">
@@ -997,7 +1003,7 @@ function render(resetPaging){
     if(tag && it.tag !== tag) return false;
     if(price && !it.priceBuckets.includes(price)) return false;
     if(site && it.site !== site) return false;
-    if(confirmedOnly && !it.confirmed) return false;
+    if(confirmedOnly && (!it.confirmed || (it.orderStatus && it.orderStatus.status==='full'))) return false;
     if(donateOnly && !it.hasDonate) return false;
     if(orderOkOnly && !(it.orderStatus && (it.orderStatus.status==='ok'||it.orderStatus.status==='limited'))) return false;
     return true;
