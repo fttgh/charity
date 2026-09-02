@@ -290,6 +290,29 @@
   }
   .visitor-line[data-count="0"]{display:none;}
 
+  /* ---------- order-gap status (志工私訊回報) ---------- */
+  .badge.order-ok{color:var(--sage); border-color:rgba(127,163,142,.6); font-weight:700; background:rgba(127,163,142,.12);}
+  .badge.order-limited{color:var(--clay); border-color:rgba(192,122,74,.6); font-weight:700; background:rgba(192,122,74,.12);}
+  .badge.order-nearfull{color:var(--cream-dim); border-color:rgba(138,133,119,.5); border-style:dashed;}
+  .badge.order-full{color:var(--grey); border-color:var(--navy-700); background:rgba(138,133,119,.1);}
+  .note-line{
+    font-size:11.5px; color:var(--cream-dim);
+    background:rgba(127,163,142,.08); border:1px solid rgba(127,163,142,.25);
+    border-radius:8px; padding:7px 10px; margin-top:2px; line-height:1.6;
+  }
+  .note-line b{color:var(--sage);}
+  .orderstat-bar{
+    max-width:1180px; margin:14px auto 0; padding:0 20px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .orderstat-bar[hidden]{display:none;}
+  .orderstat-pill{
+    background:rgba(127,163,142,.08); border:1px solid rgba(127,163,142,.3);
+    border-radius:12px; padding:10px 16px; flex:1 1 160px;
+  }
+  .orderstat-pill .n{font-family:"IBM Plex Mono",monospace; font-size:18px; font-weight:700; color:var(--sage);}
+  .orderstat-pill .l{font-size:11.5px; color:var(--cream-dim); margin-top:2px;}
+
   @media (max-width:640px){
     header.hero{padding:44px 16px 24px;}
     .moon{width:130px; height:130px; top:-50px; right:2%; opacity:.7;}
@@ -361,6 +384,11 @@
   </p>
 </header>
 
+<div class="orderstat-bar" id="orderstatBar" hidden>
+  <div class="orderstat-pill"><div class="n" id="orderOkCount">0</div><div class="l">🔔 已回報仍可接單／有缺口</div></div>
+  <div class="orderstat-pill"><div class="n" id="orderSentCount">0</div><div class="l">📨 已私訊詢問，尚待機構回覆</div></div>
+</div>
+
 <div class="toolbar">
   <div class="toolbar-inner">
     <input id="search" class="search" type="text" placeholder="搜尋機構名稱或地區…">
@@ -397,8 +425,9 @@
       <button class="chip" data-site="none">尚無連結</button>
     </div>
     <div class="chip-group" id="confirmChips">
-      <button class="chip" data-confirmed="1">🥮 只看已確認商品</button>
+      <button class="chip" data-orderok="1">🔔 目前確認可接單</button>
       <button class="chip" data-donate="1">❤️ 可捐贈不取貨</button>
+      <button class="chip" data-confirmed="1">🥮 只看已確認商品</button>
     </div>
     <span class="count-tag" id="countTag">共 63 家</span>
   </div>
@@ -630,10 +659,34 @@ const CONTACT_INFO = {
   62:{phone:"08-732-5100", note:"Google表單／電話確認"},
 };
 
+// ---- 志工實際私訊／致電回報之訂單狀態（非官網資料，持續更新中）----
+// status: 'ok' = 仍可接單／有貨　'limited' = 僅剩少量品項或即將截止，時效性高　'nearfull' = 訂單已接近額滿　'full' = 機構明確回覆已額滿
+const ORDER_STATUS_META = {
+  ok:{ icon:"🔔" }, limited:{ icon:"⏰" }, nearfull:{ icon:"🔸" }, full:{ icon:"✅" }
+};
+const ORDER_STATUS = {
+  2: { status:"ok", label:"部分禮盒可接單", note:"9/2 機構回覆：中秋檔期部分禮盒仍有可接單數量，歡迎協助推廣曝光。" },
+  4: { status:"ok", label:"尚可訂購", note:"9/1 機構回覆：月餅還能訂購，歡迎透過網站下單。" },
+  5: { status:"ok", label:"可接單（9/21-30後出貨）", note:"9/1 電洽確認：訂單仍可接受，但出貨時間需在 9/21-30 之間或之後。" },
+  6: { status:"full", label:"已額滿", note:"9/1 機構回覆：光仁社福的訂單已經額滿囉！感謝各方善士熱烈支持。" },
+  11: { status:"nearfull", label:"接近額滿", note:"9/1 機構回覆：伊甸烘焙咖啡屋訂單已接近滿單，應該不缺了。" },
+  13: { status:"limited", label:"限量（僅剩鳳梨酥系列，接單至9/2止）", note:"9/1 機構回覆：中秋禮盒接單至 9/2 為止，僅剩鳳梨酥系列尚可訂購，其他品項已陸續結單／售完。" },
+};
+// ---- 已私訊詢問但尚未取得明確訂單狀態的機構 id（僅用於首頁統計數字）----
+const ORDER_PENDING_IDS = [7,9,12,14];
+
 // ---- 已實際爬官網確認的中秋商品資料（2026/08/23 查證）----
 // products: [{name, price, was?, donate?}] donate=true 表示「認購捐贈款」：付款後不會收到實體禮盒，商品由機構代送給其他弱勢/長者
 // freeShip: 免運門檻文字  deadline: 訂購/早鳥截止  payment: 付款方式  phone: 訂購專線  customizable: 是否可客製
 const CONFIRMED = {
+  4: { products:[
+        {name:"2026中秋轉贈-平安麵+皇樓月餅（您不會收到商品）",price:1000,was:1230,donate:true},
+        {name:"2026中秋轉贈-皇樓禾豐之月禮盒（您不會收到商品）",price:500,was:670,donate:true},
+        {name:"2026中秋轉贈-平安麵2袋(附醬)（您不會收到商品）",price:500,was:560,donate:true}
+      ], payment:"線上訂購（愛肯樂活工場官網）" },
+  5: { products:[
+        {name:"2026中秋-歡苗禮盒（法式焦糖腰果杏仁塔/歐式可可核桃雜糧塔/日式咖哩腰果塔/美式海鹽夏威夷豆蔓越莓塔各1入/台式鳳凰酥4入）",price:488,was:520}
+      ], payment:"信用卡／匯款轉帳／貨到付款／到店付現" },
   63: { products:[
         {name:"中秋禮盒（流心酥／茶心酥／蛋黃酥／芋頭酥／雪Q餅／巧克力餅乾／抹茶餅乾，可自由搭配）",price:null}
       ], payment:"電洽／LINE 訂購（@534fxwht）", customizable:true },
@@ -753,6 +806,7 @@ const DATA = RAW.map(r=>({
   zone: ZONE_MAP[r[2]] || "全國",
   desc: r[4]==="none" ? "原始名單查無官方購買連結，建議直接搜尋機構名稱或致電洽詢。" : pickDesc(r[3], r[0]),
   confirmed: CONFIRMED[r[0]] || null,
+  orderStatus: ORDER_STATUS[r[0]] || null,
   hasDonate: !!(CONFIRMED[r[0]] && CONFIRMED[r[0]].products && CONFIRMED[r[0]].products.some(p=>p.donate)),
   // 資料來源：presidential = 總統府原始 62 家名單；community = 後續自行查證新增
   source: r[6] || "presidential",
@@ -842,19 +896,33 @@ function sourceBadge(item){
 }
 
 function statusBadge(item, contact){
+  if(item.orderStatus && item.orderStatus.status === 'full') return ''; // 已額滿的機構不再顯示已確認/專線徽章，避免使用者誤以為還能訂購
   if(item.confirmed) return `<span class="badge confirmed">🥮 已確認中秋商品</span>`;
   if(contact && contact.phone) return `<span class="badge hasphone">📞 已提供訂購專線</span>`;
   return `<span class="badge unconfirmed">商品需點連結確認</span>`;
+}
+
+function orderStatusBadge(item){
+  if(!item.orderStatus) return '';
+  const icon = (ORDER_STATUS_META[item.orderStatus.status]||{}).icon || '🔔';
+  return `<span class="badge order-${item.orderStatus.status}">${icon} ${item.orderStatus.label}</span>`;
+}
+function orderStatusNote(item){
+  if(!item.orderStatus) return '';
+  const icon = (ORDER_STATUS_META[item.orderStatus.status]||{}).icon || '🔔';
+  return `<div class="note-line"><b>${icon} 志工回報：</b>${item.orderStatus.note}</div>`;
 }
 
 function cardHTML(item){
   const tagClass = 'tag-'+item.tag;
   const contact = getContact(item);
   const soldOut = contact && contact.soldOut;
+  const isFull = item.orderStatus && item.orderStatus.status === 'full';
   const btn = soldOut
     ? `<span class="go disabled">目前缺貨中</span>`
     : (item.url ? `<a class="go" href="${item.url}" target="_blank" rel="noopener" data-id="${item.id}">${linkLabel(item.url)}</a>` : `<span class="go disabled">暫無購買連結</span>`);
-  const body = (item.confirmed || contact) ? confirmedBlock(item.confirmed, contact) : `<p>${item.desc}</p>`;
+  // 已額滿的機構不再顯示商品明細/專線資訊，只保留下方志工回報說明，避免使用者看到一堆商品卻無法訂購而困惑
+  const body = isFull ? '' : ((item.confirmed || contact) ? confirmedBlock(item.confirmed, contact) : `<p>${item.desc}</p>`);
   return `
     <div class="card" data-name="${item.name}" data-region="${item.region}">
       <div class="badges">
@@ -862,10 +930,12 @@ function cardHTML(item){
         ${sourceBadge(item)}
         <span class="badge ${tagClass}">${TAG_LABEL[item.tag]}</span>
         ${statusBadge(item, contact)}
+        ${orderStatusBadge(item)}
         ${soldOut?'<span class="badge unconfirmed">缺貨</span>':''}
       </div>
       <h3>${item.name}</h3>
       ${body}
+      ${orderStatusNote(item)}
       ${btn}
     </div>`;
 }
@@ -888,11 +958,13 @@ function rowHTML(item){
     <div class="row" data-name="${item.name}" data-region="${item.region}">
       <div class="name">${item.name}
         <small>${item.desc}${extraLine?`<br>${extraLine}`:''}</small>
+        ${orderStatusNote(item)}
       </div>
       <div class="badges">
         <span class="badge region">${item.region}</span>
         ${sourceBadge(item)}
         <span class="badge ${tagClass}">${TAG_LABEL[item.tag]}</span>
+        ${orderStatusBadge(item)}
       </div>
       ${btn}
     </div>`;
@@ -923,6 +995,7 @@ function render(resetPaging){
   const site = document.querySelector('#siteChips .chip.active').dataset.site;
   const confirmedOnly = document.querySelector('#confirmChips .chip[data-confirmed]').classList.contains('active');
   const donateOnly = document.querySelector('#confirmChips .chip[data-donate]').classList.contains('active');
+  const orderOkOnly = document.querySelector('#confirmChips .chip[data-orderok]').classList.contains('active');
 
   const filtered = DATA.filter(it=>{
     if(q && !(it.name.toLowerCase().includes(q) || it.region.toLowerCase().includes(q))) return false;
@@ -930,8 +1003,9 @@ function render(resetPaging){
     if(tag && it.tag !== tag) return false;
     if(price && !it.priceBuckets.includes(price)) return false;
     if(site && it.site !== site) return false;
-    if(confirmedOnly && !it.confirmed) return false;
+    if(confirmedOnly && (!it.confirmed || (it.orderStatus && it.orderStatus.status==='full'))) return false;
     if(donateOnly && !it.hasDonate) return false;
+    if(orderOkOnly && !(it.orderStatus && (it.orderStatus.status==='ok'||it.orderStatus.status==='limited'))) return false;
     return true;
   });
 
@@ -982,6 +1056,18 @@ document.querySelectorAll('.chip').forEach(chip=>{
     render();
   });
 });
+
+// ---- 訂單狀態統計條：只要有任何一筆回報資料就顯示 ----
+(function initOrderStatBar(){
+  const okCount = Object.values(ORDER_STATUS).filter(o=>o.status==='ok'||o.status==='limited').length;
+  const sentCount = ORDER_PENDING_IDS.length;
+  const bar = document.getElementById('orderstatBar');
+  if(okCount || sentCount){
+    document.getElementById('orderOkCount').textContent = okCount;
+    document.getElementById('orderSentCount').textContent = sentCount;
+    bar.hidden = false;
+  }
+})();
 
 render();
 </script>
