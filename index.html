@@ -356,7 +356,7 @@
   <div class="moon"></div>
   <span class="eyebrow">中秋 ・ 好事成圓</span>
   <h1 class="title">全民挺公益<span class="accent">採購目錄</span></h1>
-  <p class="subtitle">整理自 2026 中秋「好事成圓・全民挺公益」總統府推薦名單 62 家，另補充社群新增 1 家，共 63 家身心障礙福利機構與庇護工場。點選卡片即可前往各單位訂購，支持穩定就業。</p>
+  <p class="subtitle">整理自 2026 中秋「好事成圓・全民挺公益」總統府推薦名單 62 家，另補充社群新增 2 家，共 64 家身心障礙福利機構與庇護工場。點選卡片即可前往各單位訂購，支持穩定就業。</p>
 
   <div class="stats">
     <div class="stat">
@@ -429,7 +429,7 @@
       <button class="chip" data-donate="1">❤️ 可捐贈不取貨</button>
       <button class="chip" data-confirmed="1">🥮 只看已確認中秋商品</button>
     </div>
-    <span class="count-tag" id="countTag">共 63 家</span>
+    <span class="count-tag" id="countTag">共 64 家</span>
   </div>
 </div>
 
@@ -573,7 +573,8 @@ const RAW = [
 [60,"財團法人屏東縣私立基督教伯大尼之家","屏東","gen","official","https://www.bethany-pt.org/"],
 [61,"屏東縣向陽康復之友協會附設誠欣工作坊","屏東","gen","third","https://ptps.sfaa.gov.tw/mall/storePage/62D06071-C545-4F23-B659-70902B8AE9A2"],
 [62,"社團法人屏東縣微笑關懷協會","屏東","gen","third","https://www.facebook.com/smileca1015/posts/pfbid0MxMFVCz2BdvXLi9dbUVEftBiYnX9guxhn6R95pWjF7WSevSGFBW6KdZq5v9RKGdKl"],
-[63,"小品食光烘焙庇護工場","台南","mooncake","official","https://auto.52salon.com/2133","community"]
+[63,"小品食光烘焙庇護工場","台南","mooncake","official","https://auto.52salon.com/2133","community"],
+[64,"孔媽媽×匠愛家園","高雄","cookie","official","https://kungmama.com/event","community"]
 ];
 
 const ZONE_MAP = {
@@ -657,6 +658,7 @@ const CONTACT_INFO = {
   59:{phone:"08-738-3015 / 08-775-0688"},
   61:{phone:"08-755-1200"},
   62:{phone:"08-732-5100", note:"Google表單／電話確認"},
+  64:{phone:"07-6285979", note:"產品經理 張小姐"},
 };
 
 // ---- 志工實際私訊／致電回報之訂單狀態（非官網資料，持續更新中）----
@@ -773,6 +775,10 @@ const CONFIRMED = {
         {name:"2026中秋節慶禮盒－彩悅花樣",price:null}
       ], payment:"線上刷卡", phone:"03-846-0527", customizable:true },
   60: { products:[{name:"2026年節限量義賣品／愛心伴手禮盒組",price:null}], payment:"線上刷卡／ATM", phone:"08-736-7264" },
+  64: { products:[
+        {name:"干貝醬禮盒",price:699},{name:"小口酥蛋捲禮盒",price:480},
+        {name:"雪Q餅伴手禮盒",price:280}
+      ], payment:"官網訂購（kungmama.com/event）或電洽" },
 };
 
 const TAG_LABEL = { bake:"烘焙／餐飲", soap:"手作皂／清潔", gen:"綜合商品", mooncake:"月餅／酥點禮盒", cookie:"餅乾／零食", farm:"農產／生鮮" };
