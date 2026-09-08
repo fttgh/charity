@@ -295,6 +295,7 @@
   .badge.order-limited{color:var(--clay); border-color:rgba(192,122,74,.6); font-weight:700; background:rgba(192,122,74,.12);}
   .badge.order-nearfull{color:var(--cream-dim); border-color:rgba(138,133,119,.5); border-style:dashed;}
   .badge.order-full{color:var(--grey); border-color:var(--navy-700); background:rgba(138,133,119,.1);}
+  .badge.order-volunteer{color:var(--clay); border-color:rgba(192,122,74,.6); font-weight:700; background:rgba(192,122,74,.12);}
   .note-line{
     font-size:11.5px; color:var(--cream-dim);
     background:rgba(127,163,142,.08); border:1px solid rgba(127,163,142,.25);
@@ -664,7 +665,7 @@ const CONTACT_INFO = {
 // ---- 志工實際私訊／致電回報之訂單狀態（非官網資料，持續更新中）----
 // status: 'ok' = 仍可接單／有貨　'limited' = 僅剩少量品項或即將截止，時效性高　'nearfull' = 訂單已接近額滿　'full' = 機構明確回覆已額滿
 const ORDER_STATUS_META = {
-  ok:{ icon:"🔔" }, limited:{ icon:"⏰" }, nearfull:{ icon:"🔸" }, full:{ icon:"✅" }
+  ok:{ icon:"🔔" }, limited:{ icon:"⏰" }, nearfull:{ icon:"🔸" }, full:{ icon:"✅" }, volunteer:{ icon:"🙋" }
 };
 const ORDER_STATUS = {
   2: { status:"ok", label:"部分禮盒可接單", note:"9/2 機構回覆：中秋檔期部分禮盒仍有可接單數量，歡迎協助推廣曝光。" },
@@ -674,11 +675,14 @@ const ORDER_STATUS = {
   11: { status:"nearfull", label:"接近額滿", note:"9/1 機構回覆：伊甸烘焙咖啡屋訂單已接近滿單，應該不缺了。" },
   13: { status:"full", label:"中秋禮盒已結單（鳳梨酥系列為常態商品，仍可洽詢）", note:"9/1 機構回覆：中秋禮盒接單已於 9/2 截止；鳳梨酥系列為常態商品，非中秋限定，如仍有需要可另洽詢，電話 03-498-0096#115。" },
   14: { status:"ok", label:"持續接單中", note:"9/2 機構回覆：中秋禮盒目前仍持續接單中，可透過官網連結或DM圖檔訂購表訂購。" },
+  12: { status:"full", label:"中秋限定禮盒已額滿（餅乾禮盒為常態商品，仍可選購）", note:"9/8 機構公告：中秋限定禮盒訂單已全數額滿並停止接單；官網手工餅乾禮盒為常態商品仍可選購，新訂購10/1起陸續出貨。" },
   18: { status:"nearfull", label:"接近完銷（保留少量可購買）", note:"9/3 機構回覆：義賣月餅這兩週來自各界支持已快完銷，仍保留少量數量供民眾購買，強調自產自製非OEM工廠化。" },
+  19: { status:"nearfull", label:"接近額滿", note:"9/7 機構回覆：目前已經將近額滿。" },
+  20: { status:"volunteer", label:"急需包裝志工協助", note:"9/5 機構回覆：中秋訂單人力較吃緊，缺少協助包裝的志工；若您有意願幫忙，歡迎私訊機構粉專（微笑天使烘焙坊）洽詢，謝謝大家！" },
   21: { status:"full", label:"已額滿", note:"9/2 機構粉專公開發文：中秋禮盒現貨已全數滿單，另推薦其他無月餅商品。" },
 };
 // ---- 已私訊詢問但尚未取得明確訂單狀態的機構 id（僅用於首頁統計數字）----
-const ORDER_PENDING_IDS = [7,9,12,19,20,22];
+const ORDER_PENDING_IDS = [7,9,20,22];
 
 // ---- 已實際爬官網確認的中秋商品資料（2026/08/23 查證）----
 // products: [{name, price, was?, donate?}] donate=true 表示「認購捐贈款」：付款後不會收到實體禮盒，商品由機構代送給其他弱勢/長者
